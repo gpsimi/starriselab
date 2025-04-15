@@ -1,4 +1,5 @@
 {
   "/(root)/page": "app/(root)/page.js",
+  "/(root)/register/page": "app/(root)/register/page.js",
   "/icon.png/route": "app/icon.png/route.js"
 }
