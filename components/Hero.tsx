@@ -23,13 +23,11 @@ const Hero = () => {
                         </SlideIn>
                         <SlideIn direction='bottom'>
                             <div className='max-w-xl space-y-2 md:space-y-4 '>
-                                <h2 className='text-white text-4xl font-medium lg:text-6xl'>Online Cybersecurity Bootcamp</h2>
+                                <h2 className='text-white text-4xl font-medium lg:text-5xl'>
+                                Launch Your Cybersecurity Career with Job-Ready Skills Training
+                                </h2>
                                 <h5 className='text-white max-w-lg'>
-                                    The immersive education you want, the flexibility
-                                    you need and a rewarding career in cybersecurity is
-                                    just a click away.
-                                    <br /><br />
-                                    Discover our Cybersecurity Bootcamp.
+                                Hands-on learning, and expert guidance to help you break into cybersecurity—no experience needed, just the drive to learn and succeed!
                                 </h5>
                             </div>
                         </SlideIn>
