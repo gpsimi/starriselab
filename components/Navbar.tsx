@@ -25,7 +25,7 @@ export default function Navbar() {
     }, []);
 
     useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
+        const handleClickOutside = () => {
             // Close dropdown when clicking outside
             if (dropdownOpen) {
                 setDropdownOpen(null);
