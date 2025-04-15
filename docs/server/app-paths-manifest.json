@@ -1,5 +1,8 @@
 {
+  "/(root)/about-us/page": "app/(root)/about-us/page.js",
+  "/(root)/bootcamp/[...slug]/page": "app/(root)/bootcamp/[...slug]/page.js",
+  "/(root)/contact-us/page": "app/(root)/contact-us/page.js",
   "/(root)/page": "app/(root)/page.js",
-  "/(root)/register/page": "app/(root)/register/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/icon.png/route": "app/icon.png/route.js"
 }

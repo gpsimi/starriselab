@@ -1,7 +1,7 @@
 
 import React from 'react'
 import SlideIn from './motion/SlideIn'
-import { herotags } from './constants'
+import { herotags } from '../constants'
 import { Button } from './ui/button'
 import Link from 'next/link'
 

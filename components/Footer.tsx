@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { contactBox } from './constants'
+import { contactBox } from '../constants'
 
 const Footer = () => {
   return (

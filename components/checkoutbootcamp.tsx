@@ -1,5 +1,5 @@
 import React from 'react'
-import { CheckBootcamps } from './constants'
+import { CheckBootcamps } from '../constants'
 import Image from 'next/image'
 import { Button } from './ui/button'
 import Link from 'next/link'
@@ -25,7 +25,7 @@ const CheckoutBootcamp = () => {
                             <h2 className='text-secondary-2 text-xl font-bold'>{items.title}</h2>
                             <p className='text-primary font-semibold'>{items.text}</p>
                             <p className='text-primary text-xl mb-2 font-semibold'>{items.weeks}</p>
-                            <p className='text-primary line-clamp-3 mb-5'>{items.description}</p>
+                            <p className='text-primary/65 line-clamp-3 mb-5'>{items.description}</p>
 
                             <Button asChild className='items-start'>
                                 <Link href="/register" className='text-secondary-2 bg-primary'>

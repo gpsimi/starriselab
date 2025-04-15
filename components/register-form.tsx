@@ -2,15 +2,65 @@
 
 import React from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card'
-import { Form, FormControl, FormField, FormItem, FormLabel } from './ui/form'
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from './ui/form'
 import { Input } from './ui/input'
 import { Button } from './ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select'
 import { Checkbox } from './ui/checkbox'
 import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as z from 'zod'
+import { toast } from 'sonner'
+
+const formSchema = z.object({
+  fullName: z.string().min(2, 'Name must be at least 2 characters'),
+  email: z.string().email('Please enter a valid email'),
+  phone: z.string().min(10, 'Please enter a valid phone number'),
+  city: z.string().min(2, 'Please enter a valid city'),
+  birthYear: z.string(),
+  newsletter: z.boolean(),
+  consent: z.boolean().refine(val => val === true, {
+    message: 'You must consent to receive communications',
+  }),
+})
+
+type FormValues = z.infer<typeof formSchema>
 
 const RegisterForm = () => {
-  const form = useForm()
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      fullName: '',
+      email: '',
+      phone: '',
+      city: '',
+      birthYear: '',
+      newsletter: false,
+      consent: false,
+    },
+  })
+
+  async function onSubmit(values: FormValues) {
+    try {
+      const response = await fetch('/api/submit-application', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to submit application')
+      }
+
+      toast.success('Application submitted successfully!')
+      form.reset()
+    } catch (error) {
+      toast.error('Failed to submit application. Please try again.')
+      console.error('Submission error:', error)
+    }
+  }
 
   return (
     <div className="structure py-10">
@@ -27,8 +77,9 @@ const RegisterForm = () => {
           </div>
 
           <Form {...form}>
-            <form className="space-y-6">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <FormField
+                control={form.control}
                 name="fullName"
                 render={({ field }) => (
                   <FormItem>
@@ -36,12 +87,14 @@ const RegisterForm = () => {
                     <FormControl>
                       <Input placeholder="Full Name" className="border-primary focus-visible:ring-primary focus-visible:ring-1" {...field} />
                     </FormControl>
+                    <FormMessage className="text-red-700" />
                   </FormItem>
                 )}
               />
 
               <div className="grid md:grid-cols-2 gap-6">
                 <FormField
+                  control={form.control}
                   name="email"
                   render={({ field }) => (
                     <FormItem>
@@ -49,11 +102,13 @@ const RegisterForm = () => {
                       <FormControl>
                         <Input type="email" placeholder="Email" className="border-primary focus-visible:ring-primary focus-visible:ring-1" {...field} />
                       </FormControl>
+                      <FormMessage className="text-red-700" />
                     </FormItem>
                   )}
                 />
 
                 <FormField
+                  control={form.control}
                   name="phone"
                   render={({ field }) => (
                     <FormItem>
@@ -61,6 +116,7 @@ const RegisterForm = () => {
                       <FormControl>
                         <Input placeholder="Phone Number" className="border-primary focus-visible:ring-primary focus-visible:ring-1" {...field} />
                       </FormControl>
+                      <FormMessage className="text-red-700" />
                     </FormItem>
                   )}
                 />
@@ -68,6 +124,7 @@ const RegisterForm = () => {
 
               <div className="grid md:grid-cols-2 gap-6">
                 <FormField
+                  control={form.control}
                   name="city"
                   render={({ field }) => (
                     <FormItem>
@@ -75,16 +132,18 @@ const RegisterForm = () => {
                       <FormControl>
                         <Input placeholder="City Name" className="border-primary focus-visible:ring-primary focus-visible:ring-1" {...field} />
                       </FormControl>
+                      <FormMessage className="text-red-700" />
                     </FormItem>
                   )}
                 />
 
                 <FormField
+                  control={form.control}
                   name="birthYear"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Which year were you born?</FormLabel>
-                      <Select onValueChange={field.onChange}>
+                      <Select onValueChange={field.onChange} value={field.value}>
                         <FormControl>
                           <SelectTrigger className="border-primary focus-visible:ring-primary focus-visible:ring-1">
                             <SelectValue placeholder="Select a year" />
@@ -98,6 +157,7 @@ const RegisterForm = () => {
                           ))}
                         </SelectContent>
                       </Select>
+                      <FormMessage className="text-red-700" />
                     </FormItem>
                   )}
                 />
@@ -105,6 +165,7 @@ const RegisterForm = () => {
 
               <div className="space-y-4">
                 <FormField
+                  control={form.control}
                   name="newsletter"
                   render={({ field }) => (
                     <FormItem className="flex items-start space-x-3 space-y-0">
@@ -121,11 +182,13 @@ const RegisterForm = () => {
                           we promise to only send you the good stuff.
                         </p>
                       </div>
+                      <FormMessage className="text-red-700" />
                     </FormItem>
                   )}
                 />
 
                 <FormField
+                  control={form.control}
                   name="consent"
                   render={({ field }) => (
                     <FormItem className="flex items-start space-x-3 space-y-0">
