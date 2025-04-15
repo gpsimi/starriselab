@@ -43,8 +43,7 @@ export default function Navbar() {
         return null;
     }
 
-    const handleDropdown = (label: string, e: React.MouseEvent) => {
-        e.stopPropagation(); // Prevent the click from bubbling up
+    const handleDropdown = (label: string) => {
         setDropdownOpen(dropdownOpen === label ? null : label);
     };
 
@@ -81,7 +80,7 @@ export default function Navbar() {
                                             className={cn("flex items-center justify-center gap-1 text-sm px-5 uppercase text-primary hover:text-secondary-2", {
                                                 "text-secondary-2": isActive,
                                             })}
-                                            onClick={(e) => handleDropdown(item.label, e)}
+                                            onClick={() => handleDropdown(item.label)}
                                         >
                                             {item.label}
                                             {item.subItems && (
