@@ -1,5 +1,5 @@
+import { functions } from '@/constants'
 import React from 'react'
-import { functions } from '../constants'
 
 const Function = () => {
   return (

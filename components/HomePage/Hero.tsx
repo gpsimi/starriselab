@@ -1,9 +1,10 @@
 
 import React from 'react'
-import SlideIn from './motion/SlideIn'
-import { herotags } from '../constants'
-import { Button } from './ui/button'
+
+import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import SlideIn from '../motion/SlideIn'
+import { herotags } from '@/constants'
 
 
 const Hero = () => {

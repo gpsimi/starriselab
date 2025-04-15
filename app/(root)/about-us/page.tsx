@@ -1,11 +1,11 @@
-import React from 'react'
+import AboutBody from '@/components/AboutPage/about-body';
+import AboutHero from '@/components/AboutPage/about-hero';
 
 const AboutUsPage = () => {
   return (
-    <section id='contact' className='py-12 lg:py-24 '>
-      <div className='structure'>
-        AboutUsPage
-      </div>
+    <section>
+      <AboutHero />
+      <AboutBody />
     </section>
   )
 }

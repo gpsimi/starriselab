@@ -114,21 +114,21 @@ const functions = [
 ];
 const CheckBootcamps = [
     {
-        image: "/images/course.png",
+        image: "/images/technical-analyst.jpg",
         weeks: "(8 Weeks)",
         title: "Technical Support Analyst",
         text: "This Bootcamp Prepares You for CompTIA A+ Exam",
         description: "Gain essential skills for entry-level IT support roles, including network administration, operating systems, and troubleshooting. Learn to manage devices, peripherals, and basic system security. This bootcamp aligns with CompTIA A+, preparing you for roles like IT Support Specialist and Technical Support Analyst."
     },
     {
-        image: "/images/course.png",
+        image: "/images/cybersecurity-analyst.jpg",
         weeks: "(8 Weeks)",
         title: "Cybersecurity Analyst",
         text: "This Bootcamp Prepares You for CompTIA Security+ and CySA+ Exams",
         description: "Prepare for roles in network security and incident response. Learn to analyze and mitigate cyber threats, secure networks, and use security tools. This bootcamp aligns with CompTIA Security+ and CySA+, making you ready for positions like Cybersecurity Analyst and Incident Responder."
     },
     {
-        image: "/images/course.png",
+        image: "/images/ethical-hacker.jpg",
         weeks: "(8 Weeks)",
         title: "Ethical Hacker",
         text: "This Bootcamp Prepares You for Certified Ethical Hacker (CEH) Exam",

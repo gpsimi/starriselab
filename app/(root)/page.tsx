@@ -1,8 +1,9 @@
-import CheckoutBootcamp from "@/components/checkoutbootcamp";
-import EmailAddress from "@/components/emailaddress";
-import Function from "@/components/function";
-import Hero from "@/components/Hero";
-import WhyChooseUS from "@/components/whychooseus";
+import CheckoutBootcamp from "@/components/HomePage/checkoutbootcamp";
+import EmailAddress from "@/components/HomePage/emailaddress";
+import Function from "@/components/HomePage/function";
+import Hero from "@/components/HomePage/Hero";
+import WhyChooseUS from "@/components/HomePage/whychooseus";
+
 
 export default function Home() {
   return (

@@ -3,9 +3,10 @@
 
 import Image from 'next/image'
 import React from 'react'
-import SlideIn from './motion/SlideIn'
 import { motion, AnimatePresence } from 'framer-motion';
-import { whychoose } from '../constants';
+import SlideIn from '../motion/SlideIn';
+import { whychoose } from '@/constants';
+
 
 
 const WhyChooseUS = () => {

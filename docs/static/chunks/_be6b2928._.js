@@ -196,21 +196,21 @@ const functions = [
 ];
 const CheckBootcamps = [
     {
-        image: "/images/course.png",
+        image: "/images/technical-analyst.jpg",
         weeks: "(8 Weeks)",
         title: "Technical Support Analyst",
         text: "This Bootcamp Prepares You for CompTIA A+ Exam",
         description: "Gain essential skills for entry-level IT support roles, including network administration, operating systems, and troubleshooting. Learn to manage devices, peripherals, and basic system security. This bootcamp aligns with CompTIA A+, preparing you for roles like IT Support Specialist and Technical Support Analyst."
     },
     {
-        image: "/images/course.png",
+        image: "/images/cybersecurity-analyst.jpg",
         weeks: "(8 Weeks)",
         title: "Cybersecurity Analyst",
         text: "This Bootcamp Prepares You for CompTIA Security+ and CySA+ Exams",
         description: "Prepare for roles in network security and incident response. Learn to analyze and mitigate cyber threats, secure networks, and use security tools. This bootcamp aligns with CompTIA Security+ and CySA+, making you ready for positions like Cybersecurity Analyst and Incident Responder."
     },
     {
-        image: "/images/course.png",
+        image: "/images/ethical-hacker.jpg",
         weeks: "(8 Weeks)",
         title: "Ethical Hacker",
         text: "This Bootcamp Prepares You for Certified Ethical Hacker (CEH) Exam",
@@ -367,7 +367,8 @@ function Navbar() {
                                     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                         className: "group relative",
                                         children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                                href: item.href,
                                                 className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["cn"])("flex items-center justify-center gap-1 text-sm px-5 uppercase text-primary hover:text-secondary-2", {
                                                     "text-secondary-2": isActive
                                                 }),

@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import { Button } from './ui/button'
+import { Button } from '@/components/ui/button'
 import { mobileNav, navLinks } from "@/constants";
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
@@ -77,7 +77,7 @@ export default function Navbar() {
                                         key={index}
                                         className="group relative"
                                     >
-                                        <button
+                                        <Link href={item.href}
                                             className={cn("flex items-center justify-center gap-1 text-sm px-5 uppercase text-primary hover:text-secondary-2", {
                                                 "text-secondary-2": isActive,
                                             })}
@@ -89,7 +89,7 @@ export default function Navbar() {
                                                     "rotate-180": dropdownOpen === item.label
                                                 })} />
                                             )}
-                                        </button>
+                                        </Link>
                                         {item.subItems && dropdownOpen === item.label && (
                                             <div 
                                                 className="absolute top-full left-0 mt-2 w-64 bg-white shadow-lg rounded-md overflow-hidden z-50"

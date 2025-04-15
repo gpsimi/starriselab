@@ -1,12 +1,12 @@
-import React from 'react'
+import ContactBody from '@/components/ContactPage/contact-body';
+import ContactHero from '@/components/ContactPage/contact-hero';
 
 
 export default function ContactUsPage () {
   return (
-    <section id='contact' className='py-12 lg:py-24 '>
-      <div className='structure'>
-        ContactUsPage
-      </div>
+    <section>
+      <ContactHero />
+      <ContactBody />
     </section>
   )
 }

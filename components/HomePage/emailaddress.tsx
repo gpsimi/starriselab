@@ -1,7 +1,7 @@
 import React from 'react'
-import { Input } from './ui/input'
-import { Button } from './ui/button'
+import { Button } from '@/components/ui/button'
 import { Mail } from 'lucide-react'
+import { Input } from '@/components/ui/input'
 
 const EmailAddress = () => {
     return (

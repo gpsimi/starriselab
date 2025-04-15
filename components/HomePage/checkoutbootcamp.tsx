@@ -1,7 +1,7 @@
 import React from 'react'
-import { CheckBootcamps } from '../constants'
+import { CheckBootcamps } from '../../constants'
 import Image from 'next/image'
-import { Button } from './ui/button'
+import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 
 const CheckoutBootcamp = () => {
