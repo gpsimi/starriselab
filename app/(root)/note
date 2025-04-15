@@ -1,0 +1,52 @@
+<div className="relative flex flex-col md:flex-row items-center justify-between">
+                    {/* Text Content */}
+                    <div className="md:w-1/2 px-6 py-12 md:py-20">
+                        <div className="space-y-4">
+                            <div className="flex gap-2 flex-wrap">
+                                <span className="bg-yellow-400 text-black font-semibold px-3 py-1 rounded">Diploma Programs</span>
+                                <span className="bg-yellow-400 text-black font-semibold px-3 py-1 rounded">12-weeks full-time</span>
+                                <span className="bg-yellow-400 text-black font-semibold px-3 py-1 rounded">30-weeks part-time</span>
+                            </div>
+                            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 uppercase">
+                                Online Cybersecurity Bootcamp
+                            </h1>
+                            <p className="text-gray-700 text-lg">
+                                The immersive education you want, the flexibility you need and a rewarding career in cybersecurity is just a click away.
+                            </p>
+                            <p className="text-gray-700 text-lg">
+                                Discover our Cybersecurity Bootcamp.
+                            </p>
+                            <div className="flex gap-4 pt-4">
+                                <button className="bg-sky-600 text-white font-semibold px-6 py-3 rounded hover:bg-sky-700 transition">
+                                    Apply Now
+                                </button>
+                                <button className="bg-cyan-500 text-white font-semibold px-6 py-3 rounded hover:bg-cyan-600 transition">
+                                    Download Curriculum
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Image */}
+                    <div className="md:w-1/2 relative">
+                        <Image
+                            src="/images/hero.jpg"
+                            alt="Cybersecurity Student"
+                            width={800}
+                            height={600}
+                            className="object-cover w-full h-full"
+                        />
+                    </div>
+
+                    {/* Optional: Wave border at bottom */}
+                    <svg
+                        className="absolute bottom-0 left-0 w-full"
+                        viewBox="0 0 1440 100"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            fill="#ffffff"
+                            d="M0,0 C480,100 960,0 1440,100 L1440,00 L0,0 Z"
+                        />
+                    </svg>
+                </div>
