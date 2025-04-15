@@ -34,7 +34,7 @@ const RegisterForm = () => {
                   <FormItem>
                     <FormLabel>Full Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="Full Name" {...field} />
+                      <Input placeholder="Full Name" className="border-primary focus-visible:ring-primary focus-visible:ring-1" {...field} />
                     </FormControl>
                   </FormItem>
                 )}
@@ -47,7 +47,7 @@ const RegisterForm = () => {
                     <FormItem>
                       <FormLabel>Email</FormLabel>
                       <FormControl>
-                        <Input type="email" placeholder="Email" {...field} />
+                        <Input type="email" placeholder="Email" className="border-primary focus-visible:ring-primary focus-visible:ring-1" {...field} />
                       </FormControl>
                     </FormItem>
                   )}
@@ -59,7 +59,7 @@ const RegisterForm = () => {
                     <FormItem>
                       <FormLabel>Phone Number</FormLabel>
                       <FormControl>
-                        <Input placeholder="Phone Number" {...field} />
+                        <Input placeholder="Phone Number" className="border-primary focus-visible:ring-primary focus-visible:ring-1" {...field} />
                       </FormControl>
                     </FormItem>
                   )}
@@ -73,7 +73,7 @@ const RegisterForm = () => {
                     <FormItem>
                       <FormLabel>Where are you applying from?</FormLabel>
                       <FormControl>
-                        <Input placeholder="City Name" {...field} />
+                        <Input placeholder="City Name" className="border-primary focus-visible:ring-primary focus-visible:ring-1" {...field} />
                       </FormControl>
                     </FormItem>
                   )}
@@ -86,13 +86,13 @@ const RegisterForm = () => {
                       <FormLabel>Which year were you born?</FormLabel>
                       <Select onValueChange={field.onChange}>
                         <FormControl>
-                          <SelectTrigger>
+                          <SelectTrigger className="border-primary focus-visible:ring-primary focus-visible:ring-1">
                             <SelectValue placeholder="Select a year" />
                           </SelectTrigger>
                         </FormControl>
-                        <SelectContent className='z-50'>
-                          {Array.from({ length: 50 }, (_, i) => new Date().getFullYear() - 50 + i).map(year => (
-                            <SelectItem key={year} value={year.toString()} className='bg-white'>
+                        <SelectContent className='z-50 bg-white'>
+                          {Array.from({ length: 51 }, (_, i) => new Date().getFullYear() - 50 + i).map(year => (
+                            <SelectItem key={year} value={year.toString()}>
                               {year}
                             </SelectItem>
                           ))}
@@ -109,7 +109,11 @@ const RegisterForm = () => {
                   render={({ field }) => (
                     <FormItem className="flex items-start space-x-3 space-y-0">
                       <FormControl>
-                        <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                        <Checkbox 
+                          checked={field.value} 
+                          onCheckedChange={field.onChange}
+                          className="border-primary data-[state=checked]:bg-primary data-[state=checked]:border-primary [&>span]:text-white" 
+                        />
                       </FormControl>
                       <div className="space-y-1 leading-none">
                         <FormLabel>Subscribe to our Newsletter</FormLabel>
@@ -126,7 +130,11 @@ const RegisterForm = () => {
                   render={({ field }) => (
                     <FormItem className="flex items-start space-x-3 space-y-0">
                       <FormControl>
-                        <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                        <Checkbox 
+                          checked={field.value} 
+                          onCheckedChange={field.onChange}
+                          className="border-primary data-[state=checked]:bg-primary data-[state=checked]:border-primary [&>span]:text-white" 
+                        />
                       </FormControl>
                       <div className="space-y-1 leading-none">
                         <FormLabel>I consent to receive phone and text communications regarding my application.</FormLabel>
