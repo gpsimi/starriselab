@@ -9,9 +9,6 @@ import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 import { MdMenu, MdOutlineClose } from 'react-icons/md';
 import { ChevronDown } from 'lucide-react';
-import { BsInstagram } from "react-icons/bs";
-import { FaFacebook, FaPhoneAlt } from "react-icons/fa";
-import { MdMail } from "react-icons/md";
 import { IconType } from "react-icons";
 
 type SubItemWithIcon = {
