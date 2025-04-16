@@ -1,6 +1,0 @@
-{
-  "/(root)/about-us/page": "app/(root)/about-us/page.js",
-  "/(root)/contact-us/page": "app/(root)/contact-us/page.js",
-  "/(root)/page": "app/(root)/page.js",
-  "/icon.png/route": "app/icon.png/route.js"
-}

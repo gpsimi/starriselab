@@ -1,3 +1,0 @@
-{
-  "/(root)/bootcamp/[...slug]/page": "app/(root)/bootcamp/[...slug]/page.js"
-}

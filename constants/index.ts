@@ -12,15 +12,18 @@ export const navLinks = [
   {id: "bootcamp", label: "Bootcamp", href: "#",
     subItems: [
       { 
-        label: "Bootcamp 1"
+        label: "Bootcamp 1",
+        href: "/bootcamp/bootcamp-1"
 
        },
       { 
-        label: "Bootcamp 2"
+        label: "Bootcamp 2",
+        href: "/bootcamp/bootcamp-2"
 
        },
       { 
-        label: "Bootcamp 3"
+        label: "Bootcamp 3",
+        href: "/bootcamp/bootcamp-2"
 
        },
     ],
