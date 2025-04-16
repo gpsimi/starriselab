@@ -9,7 +9,22 @@ import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 import { MdMenu, MdOutlineClose } from 'react-icons/md';
 import { ChevronDown } from 'lucide-react';
+import { BsInstagram } from "react-icons/bs";
+import { FaFacebook, FaPhoneAlt } from "react-icons/fa";
+import { MdMail } from "react-icons/md";
+import { IconType } from "react-icons";
 
+type SubItemWithIcon = {
+    icon: IconType;
+    href: string;
+    label: string;
+};
+
+type SubItemWithoutIcon = {
+    label: string;
+};
+
+type SubItem = SubItemWithIcon | SubItemWithoutIcon;
 
 export default function Navbar() {
     const pathname = usePathname();
@@ -95,16 +110,32 @@ export default function Navbar() {
                                                 onClick={(e) => e.stopPropagation()} // Prevent clicks inside dropdown from closing it
                                             >
                                                 <div className="py-2">
-                                                    {item.subItems.map((subItem, idx) => (
-                                                        <Link
-                                                            key={idx}
-                                                            href={`/bootcamp/${subItem.label.toLowerCase().replace(/\s+/g, "-")}`}
-                                                            className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 uppercase"
-                                                            onClick={() => setDropdownOpen(null)}
-                                                        >
-                                                            {subItem.label}
-                                                        </Link>
-                                                    ))}
+                                                    {item.subItems.map((subItem: SubItem, idx) => {
+                                                        if ('icon' in subItem) {
+                                                            return (
+                                                                <Link
+                                                                    key={idx}
+                                                                    href={subItem.href}
+                                                                    className="flex items-center gap-2 w-full py-3 px-4 text-gray-700 hover:text-secondary-2 border-b border-gray-100 last:border-0"
+                                                                    onClick={toggleMenu}
+                                                                >
+                                                                    <subItem.icon className="h-4 w-4" />
+                                                                    <span className="font-medium text-sm">{subItem.label}</span>
+                                                                </Link>
+                                                            );
+                                                        } else {
+                                                            return (
+                                                                <Link
+                                                                    key={idx}
+                                                                    href={`/bootcamp/${subItem.label.toLowerCase().replace(/\s+/g, "-")}`}
+                                                                    className="flex items-center gap-2 w-full py-3 px-4 text-gray-700 hover:text-secondary-2 border-b border-gray-100 last:border-0"
+                                                                    onClick={toggleMenu}
+                                                                >
+                                                                    <span className="font-medium text-sm">{subItem.label}</span>
+                                                                </Link>
+                                                            );
+                                                        }
+                                                    })}
                                                 </div>
                                             </div>
                                         )}
@@ -163,16 +194,32 @@ export default function Navbar() {
                                 </button>
                                 {openIndex === index && (
                                     <div className="mt-2 space-y-2 bg-gray-50/50 py-3 px-4 rounded-lg">
-                                        {item.subItems.map((subItem, idx) => (
-                                            <Link
-                                                key={idx}
-                                                href={`/bootcamp/${subItem.label.toLowerCase().replace(/\s+/g, "-")}`}
-                                                className="flex flex-col w-full py-3 px-4 text-gray-700 hover:text-secondary-2 border-b border-gray-100 last:border-0"
-                                                onClick={toggleMenu}
-                                            >
-                                                <span className="font-medium text-sm">{subItem.label}</span>
-                                            </Link>
-                                        ))}
+                                        {item.subItems.map((subItem: SubItem, idx) => {
+                                            if ('icon' in subItem) {
+                                                return (
+                                                    <Link
+                                                        key={idx}
+                                                        href={subItem.href}
+                                                        className="flex items-center gap-2 w-full py-3 px-4 text-gray-700 hover:text-secondary-2 border-b border-gray-100 last:border-0"
+                                                        onClick={toggleMenu}
+                                                    >
+                                                        <subItem.icon className="h-4 w-4" />
+                                                        <span className="font-medium text-sm">{subItem.label}</span>
+                                                    </Link>
+                                                );
+                                            } else {
+                                                return (
+                                                    <Link
+                                                        key={idx}
+                                                        href={`/bootcamp/${subItem.label.toLowerCase().replace(/\s+/g, "-")}`}
+                                                        className="flex items-center gap-2 w-full py-3 px-4 text-gray-700 hover:text-secondary-2 border-b border-gray-100 last:border-0"
+                                                        onClick={toggleMenu}
+                                                    >
+                                                        <span className="font-medium text-sm">{subItem.label}</span>
+                                                    </Link>
+                                                );
+                                            }
+                                        })}
                                     </div>
                                 )}
                             </div>

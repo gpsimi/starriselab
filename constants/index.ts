@@ -3,60 +3,119 @@ import {
   FaPhoneAlt,
   FaLaptopCode,
   FaUserShield,
+  FaFacebook,
 } from "react-icons/fa";
+import { BsInstagram } from "react-icons/bs";
 import { MdMail } from "react-icons/md";
 
 export const navLinks = [
   { id: "home", label: "Home", href: "/" },
   { id: "about", label: "About", href: "/about-us" },
-  {id: "bootcamp", label: "Bootcamp", href: "#",
+  {
+    id: "bootcamp",
+    label: "Bootcamp",
+    href: "#",
     subItems: [
-      { 
+      {
         label: "Bootcamp 1",
-        href: "/bootcamp/bootcamp-1"
-
-       },
-      { 
+        href: "/bootcamp/bootcamp-1",
+      },
+      {
         label: "Bootcamp 2",
-        href: "/bootcamp/bootcamp-2"
-
-       },
-      { 
+        href: "/bootcamp/bootcamp-2",
+      },
+      {
         label: "Bootcamp 3",
-        href: "/bootcamp/bootcamp-2"
-
-       },
+        href: "/bootcamp/bootcamp-2",
+      },
     ],
   },
-  { id: "contact", label: "Contact", href: "/contact-us" },
+  {
+    id: "contact",
+    label: "Contact",
+    href: "#",
+    subItems: [
+      {
+        icon: BsInstagram,
+        href: "https://www.instagram.com/starriselabs?igsh=MXVtZ2QxdTI3ZnBoOQ==",
+        label: "StarriseLab",
+      },
+      {
+        icon: FaFacebook,
+        href: "https://www.facebook.com/share/1EHTYr3ydr/?mibextid=wwXIfr",
+        label: "Starrise Lab",
+      },
+      {
+        icon: MdMail,
+        href: "mailto:apply@starriselabs.com",
+        label: "apply@starriselabs.com",
+      },
+      {
+        icon: MdMail,
+        href: "mailto:accounts@starriselabs.com",
+        label: "accounts@starriselabs.com",
+      },
+      {
+        icon: FaPhoneAlt,
+        href: "tel:+1(437) 449-4365",
+        label: "+1(437) 449-4365",
+      },
+    ],
+  },
 ];
 
 export const mobileNav = [
   { id: "home", label: "Home", href: "/" },
   { id: "about", label: "About", href: "/about-us" },
-  {id: "bootcamp", label: "Bootcamp", href: "#",
+  {
+    id: "bootcamp",
+    label: "Bootcamp",
+    href: "#",
     subItems: [
-      { 
-        label: "Bootcamp 1"
-
-       },
-      { 
-        label: "Bootcamp 2"
-
-       },
-      { 
-        label: "Bootcamp 3"
-
-       },
+      {
+        label: "Bootcamp 1",
+      },
+      {
+        label: "Bootcamp 2",
+      },
+      {
+        label: "Bootcamp 3",
+      },
     ],
   },
-  { id: "contact", label: "Contact", href: "/contact-us" },
-
-  
-
+  {
+    id: "contact",
+    label: "Contact",
+    href: "#",
+    subItems: [
+      {
+        icon: BsInstagram,
+        href: "https://www.instagram.com/starriselabs?igsh=MXVtZ2QxdTI3ZnBoOQ==",
+        label: "@StarriseLab",
+      },
+      {
+        icon: FaFacebook,
+        href: "https://www.facebook.com/share/1EHTYr3ydr/?mibextid=wwXIfr",
+        label: "Starrise Lab",
+      },
+      {
+        icon: MdMail,
+        href: "mailto:apply@starriselabs.com",
+        label: "apply@starriselabs.com",
+      },
+      {
+        icon: MdMail,
+        href: "mailto:accounts@starriselabs.com",
+        label: "accounts@starriselabs.com",
+      },
+      {
+        icon: FaPhoneAlt,
+        href: "tel:+1(437) 449-4365",
+        label: "+1(437) 449-4365",
+      },
+    ],
+  },
 ];
-
-
 
 export const herotags = [
   {
@@ -149,5 +208,37 @@ export const contactBox = [
     icon: MdMail,
     link: "mailto:info@starriselabs.com",
     contact: "Info@starriselabs.com",
+  },
+];
+export const mobileContact = [
+  {
+    id: 1,
+    icon: BsInstagram,
+    link: "https://www.instagram.com/starriselabs?igsh=MXVtZ2QxdTI3ZnBoOQ==",
+    contact: "+1(437) 449-4365",
+  },
+  {
+    id: 2,
+    icon: FaFacebook,
+    link: "https://www.facebook.com/share/1EHTYr3ydr/?mibextid=wwXIfr",
+    contact: "Info@starriselabs.com",
+  },
+  {
+    id: 3,
+    icon: MdMail,
+    link: "mailto:apply@starriselabs.com",
+    contact: "apply@starriselabs.com",
+  },
+  {
+    id: 4,
+    icon: MdMail,
+    link: "mailto:accounts@starriselabs.com",
+    contact: "accounts@starriselabs.com",
+  },
+  {
+    id: 5,
+    icon: FaPhoneAlt,
+    link: "tel:+1(437) 449-4365",
+    contact: "+1(437) 449-4365",
   },
 ];

@@ -5,23 +5,19 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Checkbox } from '@/components/ui/checkbox'
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import { toast } from 'sonner'
 
 const formSchema = z.object({
-  fullName: z.string().min(2, 'Name must be at least 2 characters'),
+  firstName: z.string().min(2, 'First name must be at least 2 characters'),
+  lastName: z.string().min(2, 'Last name must be at least 2 characters'),
   email: z.string().email('Please enter a valid email'),
   phone: z.string().min(10, 'Please enter a valid phone number'),
-  city: z.string().min(2, 'Please enter a valid city'),
-  birthYear: z.string(),
-  newsletter: z.boolean(),
-  consent: z.boolean().refine(val => val === true, {
-    message: 'You must consent to receive communications',
-  }),
+  hearAbout: z.enum(['website', 'friend', 'social']),
+  contactPreference: z.enum(['phone', 'email', 'text'])
 })
 
 type FormValues = z.infer<typeof formSchema>
@@ -30,13 +26,12 @@ const RegisterForm = () => {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      fullName: '',
+      firstName: '',
+      lastName: '',
       email: '',
       phone: '',
-      city: '',
-      birthYear: '',
-      newsletter: false,
-      consent: false,
+      hearAbout: undefined,
+      contactPreference: undefined
     },
   })
 
@@ -63,44 +58,52 @@ const RegisterForm = () => {
   }
 
   return (
-    <div className="structure py-10">
-      <Card className="max-w-4xl mx-auto text-primary">
-        <CardHeader className="text-center space-y-2">
-          <CardTitle className="text-4xl font-bold">APPLICATION FORM</CardTitle>
-          <CardDescription className="text-xl">Ready to apply? Hooray! We look forward to meeting you.</CardDescription>
-        </CardHeader>
+    <div className="structure py-12">
+      <div className='max-w-3xl mx-auto space-y-6 text-primary'>
+        <h3 className='text-3xl font-bold text-primary'>
+          Application Form
+        </h3>
 
-        <CardContent>
-          <div className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
-            <span className="size-5 rounded-full bg-primary/10 flex items-center justify-center">⏱</span>
-            Estimated Time to Complete: 2 min (Part-Time) | 10 min (Bootcamp)
-          </div>
+        <Card className="">
+          <CardContent>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <FormField
+                  control={form.control}
+                  name="firstName"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>First Name *</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Enter your answer" className="border-gray-200 focus-visible:ring-primary focus-visible:ring-1" {...field} />
+                      </FormControl>
+                      <FormMessage className="text-red-700" />
+                    </FormItem>
+                  )}
+                />
 
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <FormField
-                control={form.control}
-                name="fullName"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Full Name</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Full Name" className="border-primary focus-visible:ring-primary focus-visible:ring-1" {...field} />
-                    </FormControl>
-                    <FormMessage className="text-red-700" />
-                  </FormItem>
-                )}
-              />
+                <FormField
+                  control={form.control}
+                  name="lastName"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Last Name *</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Enter your answer" className="border-gray-200 focus-visible:ring-primary focus-visible:ring-1" {...field} />
+                      </FormControl>
+                      <FormMessage className="text-red-700" />
+                    </FormItem>
+                  )}
+                />
 
-              <div className="grid md:grid-cols-2 gap-6">
                 <FormField
                   control={form.control}
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Email</FormLabel>
+                      <FormLabel>Email address *</FormLabel>
                       <FormControl>
-                        <Input type="email" placeholder="Email" className="border-primary focus-visible:ring-primary focus-visible:ring-1" {...field} />
+                        <Input placeholder="Enter your answer" className="border-gray-200 focus-visible:ring-primary focus-visible:ring-1" {...field} />
                       </FormControl>
                       <FormMessage className="text-red-700" />
                     </FormItem>
@@ -112,25 +115,9 @@ const RegisterForm = () => {
                   name="phone"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Phone Number</FormLabel>
+                      <FormLabel>Phone number (Please insert country code if outside of Canada or US) *</FormLabel>
                       <FormControl>
-                        <Input placeholder="Phone Number" className="border-primary focus-visible:ring-primary focus-visible:ring-1" {...field} />
-                      </FormControl>
-                      <FormMessage className="text-red-700" />
-                    </FormItem>
-                  )}
-                />
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <FormField
-                  control={form.control}
-                  name="city"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Where are you applying from?</FormLabel>
-                      <FormControl>
-                        <Input placeholder="City Name" className="border-primary focus-visible:ring-primary focus-visible:ring-1" {...field} />
+                        <Input type="number" placeholder="The value must be a number" className="border-gray-200 focus-visible:ring-primary focus-visible:ring-1" {...field} />
                       </FormControl>
                       <FormMessage className="text-red-700" />
                     </FormItem>
@@ -139,79 +126,99 @@ const RegisterForm = () => {
 
                 <FormField
                   control={form.control}
-                  name="birthYear"
+                  name="hearAbout"
                   render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Which year were you born?</FormLabel>
-                      <Select onValueChange={field.onChange} value={field.value}>
-                        <FormControl>
-                          <SelectTrigger className="border-primary focus-visible:ring-primary focus-visible:ring-1">
-                            <SelectValue placeholder="Select a year" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent className='z-50 bg-white'>
-                          {Array.from({ length: 51 }, (_, i) => new Date().getFullYear() - 50 + i).map(year => (
-                            <SelectItem key={year} value={year.toString()}>
-                              {year}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                      <FormMessage className="text-red-700" />
-                    </FormItem>
-                  )}
-                />
-              </div>
-
-              <div className="space-y-4">
-                <FormField
-                  control={form.control}
-                  name="newsletter"
-                  render={({ field }) => (
-                    <FormItem className="flex items-start space-x-3 space-y-0">
+                    <FormItem className="space-y-3">
+                      <FormLabel>How did you hear about this event?</FormLabel>
                       <FormControl>
-                        <Checkbox 
-                          checked={field.value} 
-                          onCheckedChange={field.onChange}
-                          className="border-primary data-[state=checked]:bg-primary data-[state=checked]:border-primary [&>span]:text-white" 
-                        />
+                        <RadioGroup
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                          className="flex flex-col space-y-1"
+                        >
+                          <FormItem className="flex items-center space-x-3 space-y-0">
+                            <FormControl>
+                              <RadioGroupItem value="website" />
+                            </FormControl>
+                            <FormLabel className="font-normal">
+                              Our website
+                            </FormLabel>
+                          </FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0">
+                            <FormControl>
+                              <RadioGroupItem value="friend" />
+                            </FormControl>
+                            <FormLabel className="font-normal">
+                              Family or friend
+                            </FormLabel>
+                          </FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0">
+                            <FormControl>
+                              <RadioGroupItem value="social" />
+                            </FormControl>
+                            <FormLabel className="font-normal">
+                              Social media (Facebook, Twitter, Instagram etc)
+                            </FormLabel>
+                          </FormItem>
+                        </RadioGroup>
                       </FormControl>
-                      <div className="space-y-1 leading-none">
-                        <FormLabel>Subscribe to our Newsletter</FormLabel>
-                        <p className="text-sm text-muted-foreground">
-                          we promise to only send you the good stuff.
-                        </p>
-                      </div>
-                      <FormMessage className="text-red-700" />
+                      <FormMessage />
                     </FormItem>
                   )}
                 />
 
                 <FormField
                   control={form.control}
-                  name="consent"
+                  name="contactPreference"
                   render={({ field }) => (
-                    <FormItem className="flex items-start space-x-3 space-y-0">
+                    <FormItem className="space-y-3">
+                      <FormLabel>How would you like to receive additional information about the event and future events?</FormLabel>
                       <FormControl>
-                        <Checkbox 
-                          checked={field.value} 
-                          onCheckedChange={field.onChange}
-                          className="border-primary data-[state=checked]:bg-primary data-[state=checked]:border-primary [&>span]:text-white" 
-                        />
+                        <RadioGroup
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                          className="flex flex-col space-y-1"
+                        >
+                          <FormItem className="flex items-center space-x-3 space-y-0">
+                            <FormControl>
+                              <RadioGroupItem value="phone" />
+                            </FormControl>
+                            <FormLabel className="font-normal">
+                              Phone call
+                            </FormLabel>
+                          </FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0">
+                            <FormControl>
+                              <RadioGroupItem value="email" />
+                            </FormControl>
+                            <FormLabel className="font-normal">
+                              Email
+                            </FormLabel>
+                          </FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0">
+                            <FormControl>
+                              <RadioGroupItem value="text" />
+                            </FormControl>
+                            <FormLabel className="font-normal">
+                              Text
+                            </FormLabel>
+                          </FormItem>
+                        </RadioGroup>
                       </FormControl>
-                      <div className="space-y-1 leading-none">
-                        <FormLabel>I consent to receive phone and text communications regarding my application.</FormLabel>
-                      </div>
+                      <FormMessage />
                     </FormItem>
                   )}
                 />
-              </div>
+                <Button type="submit" className="w-full md:w-auto float-left px-12 text-white">
+                  Submit
+                </Button>
+              </form>
+            </Form>
+          </CardContent>
+        </Card>
+      </div>
 
-              <Button type="submit" className="w-full md:w-auto float-right text-white">Begin</Button>
-            </form>
-          </Form>
-        </CardContent>
-      </Card>
+
     </div>
   )
 }
